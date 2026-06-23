@@ -25,26 +25,17 @@ ORDER BY total_transactions DESC;
 -- 6. SIP transactions count
 SELECT COUNT(*) AS sip_count
 FROM fact_transactions
-WHERE transaction_type='SIP';
+WHERE transaction_type = 'SIP';
 
 -- 7. Redemption transactions count
 SELECT COUNT(*) AS redemption_count
 FROM fact_transactions
-WHERE transaction_type='Redemption';
+WHERE transaction_type = 'Redemption';
 
 -- 8. Funds with expense ratio below 1%
 SELECT amfi_code, expense_ratio
 FROM fact_performance
 WHERE expense_ratio < 1;
-
--- 9. Average Sharpe Ratio
-SELECT AVG(sharpe_ratio) AS avg_sharpe
-FROM fact_performance;
-
--- 10. Funds by Risk Grade
-SELECT risk_grade, COUNT(*) AS fund_count
-FROM fact_performance
-GROUP BY risk_grade;
 
 -- 9. Average Sharpe Ratio
 SELECT AVG(sharpe_ratio) AS avg_sharpe
